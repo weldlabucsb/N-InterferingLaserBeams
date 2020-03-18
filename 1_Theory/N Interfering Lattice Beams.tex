@@ -1,0 +1,487 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{fancyhdr}
+\usepackage{setspace}  %Lets me use \vspace{10mm}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{csquotes}
+\usepackage{changepage}
+\usepackage[makeroom]{cancel}
+\usepackage{braket}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks = true,
+ allcolors = blue,
+ linkcolor = black}
+
+
+\oddsidemargin = 0in
+\topmargin = -0.1in
+\headheight=9pt
+\headsep = 0pt
+\textheight = 8.5in
+\textwidth = 6.5in
+\marginparsep = 0in
+\marginparwidth = 0in
+\footskip = 0.5in
+
+
+%%%%% FOOTER %%%%%
+\pagestyle{fancy}
+\fancyhf{}
+%\rfoot{\copyright\ Peter Dotti 2016 \hspace{1cm}}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{0pt}
+
+
+
+%%%%% General %%%%%
+    % Misc %
+    \newcommand{\eq}[1]{\begin{equation*} \begin{split}   #1  \end{split} \end{equation*}}
+    
+    \newcommand{\EE}[1]{\times 10^{#1}}
+    
+    \newcommand{\krond}[1]{\delta_{#1}}
+    
+    \newcommand{\dg}{\dagger}
+    
+    \newcommand{\FT}{\mathscr{F}}
+    
+    \newcommand{\Scale}[2]{\scalebox{#1}{$#2$}}  %%% TO SCALE THINGS IN MATH MODE
+   
+    
+    % Parentheses/Brakets/Etc. %
+    \newcommand{\lef}{\left}
+    \newcommand{\rig}{\right}
+    
+    \newcommand{\abs}[1]{\left| #1 \right|}
+    
+    \newcommand{\bk}{\braket}
+    \newcommand{\BK}{\Braket}
+    
+    \newcommand{\kb}[2]{\ket{#1}\!\bra{#2}}
+    \newcommand{\KB}[2]{\Ket{#1}\!\Bra{#2}}
+    
+    \newcommand{\spaceimplies}{\quad \quad \implies \quad \quad}
+    
+    % Symbols %
+    \newcommand{\rta}{\rightarrow}
+    \newcommand{\lfa}{\leftarrow}
+    \newcommand{\upa}{\uparrow}
+    \newcommand{\doa}{\downarrow}
+    \newcommand{\hb}{\hbar}
+    
+    \newcommand{\tRe}{\text{Re}}
+    \newcommand{\tIm}{\text{Im}}
+    
+    
+    % Parallel/ Perpendicular %
+    \newcommand{\para}{\parallel}
+    \newcommand{\perpen}{\bot}
+    
+    %%%%% Derivative Shortcuts %%%%%
+    \newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+    \newcommand{\der}[2]{\frac{d #1}{d #2}}
+    \newcommand{\derii}[2]{\frac{d^2 #1}{d {#2}^2}}
+    \newcommand{\pdt}[1]{\frac{\partial #1}{\partial t}}
+    \newcommand{\pa}{\partial}
+    
+    %%%%% Multivariable Derivatives %%%%%
+    \newcommand{\dive}{\nabla\cdot}
+    \newcommand{\curl}{\nabla\times}
+    
+    %% Differentials %%
+    \newcommand{\dS}{d\mathbf{S}}
+    \newcommand{\dl}{d\mathbf{l}}
+    \newcommand{\dV}{d^3r}
+    
+    % E + M &
+    \newcommand{\curlE}{\nabla \times \vE}
+    \newcommand{\curlB}{\nabla \times \vB}
+    \newcommand{\divE}{\nabla \cdot \vE}
+    \newcommand{\divB}{\nabla \cdot \vB}
+    \newcommand{\divJ}{\nabla \cdot \vJ}
+    
+    % Claim/Proof %
+    \newcommand{\Claim}{{\bf Claim:\ \ }}
+    \newcommand{\Proof}{{\bf Proof:\ \ }}
+
+
+
+%%%%% Matrix and Column Vector Shortcuts %%%%%
+    \newcommand{\twovec}[2]{\left[\begin{array}{c} #1\\ #2  \end{array}\right]} 
+    \newcommand{\threevec}[3]{\left[\begin{array}{c} #1\\ #2 \\ #3 \end{array}\right]} 
+    \newcommand{\fourvec}[4]{\left[\begin{array}{c} #1\\ #2 \\ #3\\ #4 \end{array}\right]}
+    
+    \newcommand{\twomat}[4]{\left[\begin{array}{cc} #1 & #2 \\ #3 & #4 \end{array}\right]}  
+
+
+
+%%%%% Trigonometry %%%%%
+    \newcommand{\acos}{\text{acos}}
+    \newcommand{\acosh}{\text{acosh}}
+    \newcommand{\asinh}{\text{asinh}}
+
+
+
+%%%%%% GREEK ABREVIATIONS %%%%%
+    % Upper %
+    \newcommand{\Ga}{\Gamma}
+    \newcommand{\De}{\Delta}
+    \newcommand{\TTH}{\Theta}
+    \newcommand{\La}{\Lambda}
+    \newcommand{\Om}{\Omega}
+    
+    % Lower %
+    \newcommand{\alp}{\alpha}
+    \newcommand{\be}{\beta}
+    \newcommand{\ga}{\gamma}
+    \newcommand{\de}{\delta}
+    \newcommand{\eps}{\epsilon}
+    \newcommand{\ze}{\zeta}
+    \newcommand{\et}{\eta}
+    \newcommand{\veps}{\varepsilon}
+    \newcommand{\tth}{\theta}
+    \newcommand{\kap}{\kappa}
+    \newcommand{\la}{\lambda}
+    \newcommand{\rh}{\rho}
+    \newcommand{\si}{\sigma}
+    \newcommand{\ph}{\phi}
+    \newcommand{\vphi}{\varphi}
+    \newcommand{\om}{\omega}
+
+
+%%%%%%  BOLD VECTORS (and some symbols)  %%%%%%
+    \newcommand{\partialder}[2]{\frac{\partial #1}{\partial #2}}
+    \newcommand{\fullder}[2]{\frac{d #1}{d #2}}
+    \newcommand{\vA}{\mathbf{A}}
+    \newcommand{\vB}{\mathbf{B}}
+    \newcommand{\calB}{\mathcal{B}}
+    \newcommand{\vcalB}{\boldsymbol{\mathcal{B}}}
+    \newcommand{\vC}{\mathbf{C}}
+    \newcommand{\vD}{\mathbf{D}}
+    \newcommand{\vE}{\mathbf{E}}
+    \newcommand{\calE}{\mathcal{E}}
+    \newcommand{\vcalE}{\boldsymbol{\mathcal{E}}}
+    \newcommand{\emf}{\mathcal{E}}
+    \newcommand{\vF}{\mathbf{F}}
+    \newcommand{\vJ}{\mathbf{J}}
+    \newcommand{\vH}{\mathbf{H}}
+    \newcommand{\vI}{\mathbf{I}}
+    \newcommand{\vL}{\mathbf{L}}
+    \newcommand{\vP}{\mathbf{P}}
+    \newcommand{\vQ}{\mathbf{Q}}
+    \newcommand{\vS}{\mathbf{S}}
+
+        \newcommand{\va}{\mathbf{a}}
+        \newcommand{\vb}{\mathbf{b}}
+        \newcommand{\vj}{\mathbf{j}}
+        \newcommand{\vf}{\mathbf{f}}
+        \newcommand{\vg}{\mathbf{g}}
+        \newcommand{\vk}{\mathbf{k}}
+        \newcommand{\vm}{\mathbf{m}}
+        \newcommand{\vp}{\mathbf{p}}
+        \newcommand{\vr}{\mathbf{r}}
+        \newcommand{\vs}{\mathbf{s}}
+        \newcommand{\vu}{\mathbf{u}}
+        \newcommand{\vv}{\mathbf{v}}
+        \newcommand{\vx}{\mathbf{x}}
+        \newcommand{\vy}{\mathbf{y}}
+        \newcommand{\vz}{\mathbf{z}}
+
+        % Hat Symbols %
+        \newcommand{\ehat}{\hat{e}}
+        \newcommand{\khat}{\hat{k}}
+        \newcommand{\nhat}{\hat{n}}
+        \newcommand{\vkhat}{\mathbf{\hat{k}}}
+        \newcommand{\vrhat}{\mathbf{\hat{r}}}
+        \newcommand{\vrh}{\mathbf{\hat{r}}}
+        \newcommand{\vehat}{\mathbf{\hat{e}}}
+        \newcommand{\vxhat}{\mathbf{\hat{x}}}
+        \newcommand{\vxh}{\mathbf{\hat{x}}}
+        \newcommand{\vyhat}{\mathbf{\hat{y}}}
+        \newcommand{\vyh}{\mathbf{\hat{y}}}
+        \newcommand{\zhat}{\hat{z}}
+        \newcommand{\vzhat}{\mathbf{\hat{z}}}
+        \newcommand{\vzh}{\mathbf{\hat{z}}}
+        
+        \newcommand{\Qhat}{\hat{Q}}
+
+    % Greek %
+    \newcommand{\bs}{\boldsymbol}
+    
+    \newcommand{\valp}{\boldsymbol{\alpha}}
+    \newcommand{\vbe}{\boldsymbol \be}
+    \newcommand{\vmu}{\boldsymbol{\mu}}
+    \newcommand{\vsi}{\boldsymbol\sigma}
+    \newcommand{\vtau}{\boldsymbol\tau}
+    \newcommand{\vom}{\boldsymbol\omega}
+    
+        % Greek Unit Vectors %
+        \newcommand{\vthhat}{\boldsymbol{\hat{\theta}}}
+        \newcommand{\vrhohat}{\boldsymbol{\hat{\rho}}}
+        \newcommand{\vphihat}{\boldsymbol{\hat{\phi}}}
+
+
+    % Misc %
+    \newcommand{\valpE}{\boldsymbol{\alpha}_{E1}}
+    \newcommand{\valpEii}{\boldsymbol{\alpha}_{E2}}
+    \newcommand{\valpM}{\boldsymbol{\alpha}_{M1}}
+
+
+\begin{document}
+\begin{center}
+\Large $N$ Interfering Lattice Beams
+\end{center}
+
+Here we record an analysis of $N$ interfering lattice beams.
+
+\section{Preliminaries}
+
+\subsection{Complex Representation}
+We use standard complex notation to represent the electromagnetic plane waves.  That is, we represent the plane wave by
+\[
+\vE = \vE_0 e^{i(\vk\cdot \vr - \ph)}
+\]
+which represents physical plane wave
+\[
+\text{Re}(\vE\,e^{-i\om t}) = \vE_0 \cos(\vk\cdot \vr - \om t- \ph)
+\]
+
+More generally, we represent a periodic time varying electric field by a complex valued vector function of space by 
+\[
+\vE(\vr) = \threevec{E_x(\vr)}{E_y(\vr)}{E_z(\vr)}
+\]  
+
+This represents the physical field given by
+\[
+\text{Re}(\vE(\vr)e^{-i\om t})
+\]
+
+(For now we will content ourselves with scalar electric fields.  This is sufficient for the problem of plane waves whose wave vectors all exist in a single 2D plane and who are polarized perpendicularly to the plane of those wave vectors.)
+
+\subsection{A Useful Theorem}
+For this notation, it is valuable to know the following theorem that is a simple extension of the theorem given in Zangwill\footnote{Andrew Zangwill, \emph{Mondern Electrodynamics}, Cambridge University Press 2012, ISBN 978-0-521-89697-9} section (1.6.3): 
+
+Consider two complex representations $\va(\vr)$ and $\vb(\vr)$ as defined above.  Let $T=\frac{2\pi}{\om}$ be the period of one cycle.  Then
+\eq{
+\bk{\;\text{Re}\lef[\va(\vr)e^{-i\om t}\rig]\cdot\text{Re}\lef[\vb(\vr)e^{-i\om t}\rig]\;} =&\ \frac{1}{T}\int_0^T dt\; \text{Re}\lef[\va(\vr)e^{-i\om t}\rig] \cdot\text{Re}\lef[\vb(\vr)e^{-i\om t}\rig] \\[1.3ex]
+=&\ \frac{1}{2}\text{Re}\lef[\va^*(\vr) \cdot \vb(\vr)\rig]
+}
+where $\cdot$ represents the usual dot product between vectors
+
+In particular, this allows us to get the average intensity of an electric field $E(\vr)$ as
+\[
+I_\text{avg} = \frac{1}{2}\lef( \vE^*\cdot\vE \rig)
+\]
+
+\section{Analysis}
+
+Now, let us turn to the average intensity of $N$ interfering plane waves.  In this situation, the total electric field is represented by
+\[
+\vE_\text{tot} = \sum_{l=1}^{N} \vE_l \exp\Big(i(\vk_l \cdot \vr - \ph_l)\Big)
+\]
+where $\vE_l$ are complexed valued vectors.\footnote{Specializing to a real valued $\vE_l$ gives you only linearly polarized plane waves.}
+
+Therefore, the average intensity is given by
+\begin{equation*}
+\begin{split}
+I_\text{avg} &= \frac{1}{2} \lef( \vE_\text{tot} \cdot \vE_\text{tot}^* \rig) \\[1.5ex] 
+&= \frac{1}{2} \Bigg( \sum_l \abs{E_l}^2 + \sum_{p \neq q} \lef(\vE_p\cdot \vE_q^*\rig) \exp\Big[i\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)\Big] \Bigg) \\[1.5ex] 
+&= \frac{1}{2} \Bigg( \sum_l I_l + \sum_{p > q} \lef(\vE_p\cdot \vE_q^* \rig) \exp\Big[i\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)\Big]\\[1.5ex] 
+& \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ + \lef(\vE_p^*\cdot \vE_q \rig) \exp\Big[-i\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)\Big] \bigg) \\[1.5ex] 
+\end{split}
+\end{equation*}
+
+Hence,
+\begin{equation}
+\begin{split}
+I_\text{avg} &= \frac{1}{2} \Bigg( \sum_l I_l + \sum_{p > q} \lef(\vE_p\cdot \vE_q^* \rig) \exp\Big[i\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)\Big]\\[1.5ex] 
+& \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ + \lef(\vE_p^*\cdot \vE_q \rig) \exp\Big[-i\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)\Big] \bigg) \\[1.5ex]
+\end{split}
+\label{eq:genIavg}
+\end{equation}
+
+One could put this into a more useful form by expressing
+\[
+\vE_p = \threevec{E_{px}}{E_{py}e^{i\alp_{py}}}{E_{pz}e^{i\alp_{pz}}}
+\]
+where $E_{px},E_{py},E_{py}$ are real numbers.  This would allow one to attain similar ``sum of plane wave" results to the ones below for the special cases, but we will not do this here, since it is not so relevant to our current purpose.
+
+\subsection{Specializing to Linearly Polarized Beams}
+For the case of linear polarization (i.e., when $\vE$ is a real vector) the result simplifies substantially due to the fact that $\vE_p\cdot \vE_q^*  = \vE_p^*\cdot \vE_q = \vE_p\cdot \vE_q$. 
+
+In this case, we have
+\[
+I_\text{avg} = \frac{1}{2} \sum_l I_l + \sum_{p > q} \lef(\vE_p\cdot \vE_q \rig) \cos\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)
+\]
+
+If one ignores the possibility of tensor stark shift effects, this is proportional to the potential energy of the optical dipole trap.  In total, we have a potential formed the sum of plane waves.  Specifically, for $N$ interfering plane waves beams, there will be $\frac{1}{2}(N)(N-1)$ cosine terms in the potential.
+
+\subsection{Specializing to In-Plane Beams}
+\label{sec:InPlane}
+
+Now let us assume that all of the $\vk_l$ are in the same plane.  Specifically, let $\vk_l \cdot \vzhat = 0$.\footnote{We will not assume linear polarization as in the previous section}  Then we can write 
+\[
+\vE_l = E_{lz}\vzhat + E_{l\para}e^{-i\alp_l} (\vkhat_l \times \vzhat)
+\]
+where $E_{lz}, E_{l\para}$ are real numbers.
+
+In this case, we have
+\[
+\vE_p \cdot \vE_q^*\ =\ E_{pz}E_{qz} + E_{p\para}E_{q\para}e^{-i(\alp_p-\alp_q)} (\vkhat_p \times \vzhat)\cdot (\vkhat_q \times \vzhat) \ = \ E_{pz}E_{qz} + E_{p\para}E_{q\para} e^{-i(\alp_p-\alp_q)}\vkhat_p \cdot \vkhat_q
+\]
+
+So, equation \eqref{eq:genIavg} becomes
+\begin{equation}
+\begin{split}
+I_\text{avg} &= \frac{1}{2} \Bigg( \sum_l I_l + \sum_{p > q} E_{pz}E_{qz} \cos\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)\\[1.5ex] 
+& \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ + E_{p\para}E_{q\para} \big(\cos\tth_{pq}\big) \cos\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q) - (\alp_p-\alp_q)\Big) \\[1.5ex]
+\end{split}
+\end{equation}
+where $\vkhat_p \cdot \vkhat_q = \cos\tth_{pq}$ and $\tth_{pq}$ is the angle between $\vk_p$ and $\vk_q$.
+
+\subsubsection{Linearly Polarized Light}
+
+Of course, in the case of only linearly polarized beams (i.e. $\alp_l = 0$) this simplifies a bit further to
+
+\begin{equation}
+\begin{split}
+I_\text{avg} &= \frac{1}{2} \Bigg( \sum_l I_l + \sum_{p > q} \Big(E_{pz}E_{qz} + E_{p\para}E_{q\para} \big(\cos\tth_{pq}\big)\Big) \cos\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)\
+\end{split}
+\end{equation}
+
+
+
+
+%{
+%\color{red}
+%In this case
+%\[
+%\vE_p \cdot \vE_q\ =\ E_{pz}E_{qz} + E_{p\para}E_{q\para} (\vkhat_p \times \vzhat)\cdot (\vkhat_q \times \vzhat) \ = \ E_{pz}E_{qz} + E_{p\para}E_{q\para} \vkhat_p \cdot \vkhat_q
+%\]
+%This can be expressed as 
+%\[
+%\vE_p \cdot \vE_q = E_{pz}E_{qz} + E_{p\para}E_{q\para} \cos\tth_{pq}
+%\]
+%where $\tth_{pq}$ is the angle between $\vkhat_p$ and $\vkhat_q$.
+%
+%Thus, for this case we can write
+%\eq{
+%I_\text{avg} =& \frac{1}{2} \sum_l I_l + \sum_{p > q} E_{pz}E_{qz} \cos\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)\\[1.5ex]
+%&\ \ \ \ \ \ \ \ \ \  + \sum_{p > q} E_{p\para}E_{q\para} \cos\tth_{pq} \cos\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)
+%}
+%}
+
+\subsection{Specializing to $\vzhat$ Polarized In-Plane Beams}
+
+The case in which $\vk_l \cdot \vzhat = 0$ and $\vE_l = E_l\vzhat$ is an important one because (A) it is easy to analyze and (B) it has no tensor Stark shift (which arises when the electric field has elliptical polarization and could unnecessarily complicate the situation.)  In this case, we simply have
+
+\[
+I_\text{avg} = \frac{1}{2} \sum_l I_l + \sum_{p > q} E_{p}E_{q} \cos\Big((\vk_p-\vk_q) \cdot \vr - (\ph_p-\ph_q)\Big)
+\]
+
+\subsubsection{4 Beam Lattices with $\vzhat$ Polarization}
+
+We will now consider 4 beams because it is what we want to try for our experiment.  This does not seem to lose too much control over possible lattices although, it does limit somewhat.  For example, in the 3 beam lattices used in Dan Stamper-Kurn's group, it was necessary to use horizontally polarized light.
+
+The potential of the optical lattice will be given by
+\begin{equation}
+\begin{split}
+U &= E_{1}E_{2} \cos\Big((\vk_1-\vk_2) \cdot \vr - (\ph_1-\ph_2)\Big) + E_{2}E_{3} \cos\Big((\vk_2-\vk_3) \cdot \vr - (\ph_2-\ph_3)\Big)\\[1.4ex] 
+&\;+E_{3}E_{4} \cos\Big((\vk_3-\vk_4) \cdot \vr - (\ph_3-\ph_4)\Big)+E_{4}E_{1} \cos\Big((\vk_4-\vk_1) \cdot \vr - (\ph_4-\ph_1)\Big)  \\[1.4ex]
+&\;+E_{1}E_{3} \cos\Big((\vk_1-\vk_3) \cdot \vr - (\ph_1-\ph_3)\Big)+E_{2}E_{4} \cos\Big((\vk_2-\vk_4) \cdot \vr - (\ph_2-\ph_4)\Big) \\[1.4ex]
+\label{FullPotentialU}
+\end{split}
+\end{equation}
+
+It is clear that we do not have so many free parameters as we might want.  To make this more clear, let us define the following independent variables: 
+\[
+A_1 \equiv E_{1}E_{2} \ \ \ A_2 \equiv E_{2}E_{3} \ \ \ A_3 \equiv E_{3}E_{4} \ \ \ A_X \equiv E_{1}E_{3}
+\]
+\[
+\de \vk_1 \equiv (\vk_1-\vk_2) \ \ \ \de \vk_2 \equiv (\vk_2-\vk_3) \ \ \ \de \vk_3 \equiv (\vk_3-\vk_4)
+\]
+\[
+\de \ph_1 \equiv (\ph_1-\ph_2) \ \ \ \de \ph_2 \equiv (\ph_2-\ph_3) \ \ \ \de \ph_3 \equiv (\ph_3-\ph_4)
+\]
+
+Expressing the potential in terms of these new variables, we have
+
+\eq{
+U &= A_1\cos\Big(\de \vk_1 \cdot \vr - \de \ph_1\Big) + A_2 \cos\Big(\de \vk_2 \cdot \vr - \de \ph_2\Big)\\[1.4ex] 
+&\;+ A_3 \cos\Big(\de \vk_3 \cdot \vr - \de \ph_3\Big)+ \frac{A_1 A_3}{A_2}  \cos\Big((\de \vk_1 +\de \vk_2 +\de \vk_3)\cdot \vr - (\de \ph_1 +\de \ph_2 +\de \ph_3)\Big)  \\[1.4ex]
+&\;+ A_X\cos\Big((\de \vk_1+\de \vk_2) \cdot \vr - (\de\ph_1+\de\ph_2)\Big)+ \frac{A_1A_3}{A_X}\cos\Big((\de \vk_2+\de\vk_3) \cdot \vr - (\de \ph_2 + \de \ph_3)\Big) \\[1.4ex]
+}
+
+Figure \ref{fig:kDiagram} shows the graphical relationships between the vectors $\vk_l$ and $\de\vk_l$
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{Sample_k_Vects.pdf}
+\caption{Diagram of the laser beam wave vectors $\vk_l$ and the newly defined variables $\de\vk_l$.  Notice that once $\de \vk_1$ and $\de \vk_3$ are chosen, there are few options for $\de \vk_2$ (details in text).}
+\label{fig:kDiagram}
+\end{figure}
+
+Note that the system has effectively one less variable than it appears.  Specifically, $\de \vk_{2}$ is very constrained once $\de \vk_1$ and $\de \vk_3$ are chosen.  This constraint arises from the requirement that $\abs{\vk_l} = \frac{2\pi}{\lambda}$.  Nonetheless, $\de \vk_1$ and $\de \vk_3$ can independently be any vectors, so long as $\abs{\de \vk_1},  \abs{\de \vk_3} \le \frac{\pi}{\lambda}$.  This becomes quite clear in the following procedure: (1) Choose $\de \vk_1$ and $\de \vk_3$.  (2) Consider the possible set of \{$k_1$, $k_2$, $k_3$, $k_4$\}.  Assuming $\de \vk_1 = 0$,\footnote{The case $\de \vk_1 \neq 0$ would mean that $k_1$ and $k_2$ are effectively part of a single plane wave, and you would get an interference pattern formed by only 3 waves.} then there are at most 2 choices\footnote{There is only one choice when $\de \vk_1 = \frac{\pi}{\lambda}$} for $k_1$ and $k_2$.  Similarly, setting $\de \vk_3$ gives only two choices for $k_3$ and $k_4$.  (3)  Consider possible $\de \vk_{2}$, and it is clear that there are only (at most) four choices of $\de \vk_{2}$.
+
+In contrast, the three $\de\ph_l$ are all independent.  An experimental consequence of this is that stable lattices require 3 phase locks (although, perhaps less can be accomplished if two of the beams are formed by retro-reflection of a single beam.)
+
+
+\subsection{Special Case of All 4 Beams Orthogonal and Opposite Beams of Equal Power}
+
+This case was very well analyzed by Daniel Greif in his thesis \url{https://doi.org/10.3929/ethz-a-010008097}. In this case, we take $\vk_1 = k\vxhat = -\vk_2$ and $\vk_3 = k\vyhat = -\vk_4$.  We also keep all polarizations in the $\vzhat$ direction.
+
+In this case, let us change to a slightly more natural notation by renaming the phases according to $\ph_1 \rta \ph_{x,1}$, $\ph_2 \rta \ph_{x,2}$, $\ph_3 \rta \ph_{y,1}$, and $\ph_4 \rta \ph_{y,2}$ (NOTE: This is slightly different notation than Greif uses.  Specifically, he takes the counter propagating beams to be $\ph_2 \rta \ph_{x,1} + \ph_{x,2}$ and  $\ph_4 \rta \ph_{y,1} + \ph_{y,2}$ ).
+
+The resulting potential can be expressed as 
+\[
+U = -\frac{1}{2}V_X \cos(2kx) - \frac{1}{2}V_Y\cos(2ky) - 2\sqrt{V_XV_Y}\cos(kx)\cos(ky)\cos(\Phi)
+\]
+where $\Phi = \frac{1}{2}\lef(\ph_{y,1}-\ph_{x,1} + \ph_{y,2}-\ph_{x,2}\rig)$
+
+\section{Consideration in Terms of Reciprocal Space}
+
+A fruitful consideration is to associate the wavevectors, $\vk_i - \vk_j$ of the cosine components of the potential that appear in equation \eqref{FullPotentialU} with basis vectors of a reciprocal space.  Of course, the fourier transform of the potential does not give a full reciprocal space lattice; it only gives six points at each of the $\vk_i - \vk_j$.  However, it is clear that there are periodic elements to potential in real space, and one can consider this sum of cosines as a special case in which the contents of a unit cell exactly cancel out all of the other points of the reciprocal lattice.  That being said, it does not seem to necessarily be the case that the whole interference pattern in a lattice -- it could have a sort of quasiperiodic structure if two of the $\vk_i - \vk_j$ result in an incommensurate lattice.
+
+%I CAN ALSO SEE THAT THERE IS A LATTICE STRUCTURE TO THE WHOLE SYSTEM AS A RESULT OF THE CONSTRUCTION OF THE $(\vk_i-\vk_j)$.  HOWEVER, IT IS NOT APPARENT TO ME HOW TO EXACTLY CONSTRUCT WHAT WOULD BE THE ABSTRACT RECIPROCAL LATTICE.  IT'S CLEAR WHAT POINTS WILL BE PRESENT, BUT THE WEIGHTINGS AND PHASES ARE NOT SO CLEAR TO ME.
+\section{Considering a 3-Beam Lattice}
+
+To understand the restrictions on the types of potentials that can be made, let us consider 3 interfering beams for a moment.  In this case, we only have 
+
+\begin{equation}
+\begin{split}
+U &= E_{1}E_{2} \cos\Big((\vk_1-\vk_2) \cdot \vr - (\ph_1-\ph_2)\Big) + E_{2}E_{3} \cos\Big((\vk_2-\vk_3) \cdot \vr - (\ph_2-\ph_3)\Big)\\[1.4ex] 
+&\;+E_{1}E_{3} \cos\Big((\vk_1-\vk_3) \cdot \vr - (\ph_1-\ph_3)\Big)
+\end{split}
+\end{equation}
+
+It is evident that the k-vectors of the cosine (which have the form $\vk_i-\vk_j$) must satisfy the geometry depicted in the left side of figure \ref{fig:3-k-vects}.  This results simply from $(\vk_1-\vk_2) +(\vk_2-\vk_3) = (\vk_1-\vk_3)$ and the rules of vector addition.  In the right side of figure \ref{fig:3-k-vects}, the resulting real space lattice is shown, where the lines indicate the maxima of the cosine plane waves.  
+
+As drawn, the maxima of the three waves always intersect in groups of three (in other words, there are no intersections of only two maxima).  This is in fact mathematically inevitable.  The geometry of the three vectors in the left side of figure \ref{fig:3-k-vects} make this clear because one could imagine that $(\vk_1-\vk_2)$ and $(\vk_2-\vk_3)$
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Sample_3_vectors_lattice.pdf}
+\caption{WORDS WORDS WORDS}
+\label{fig:3-k-vects}
+\end{figure}
+
+\end{document}
